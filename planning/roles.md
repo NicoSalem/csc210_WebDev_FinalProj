@@ -1,11 +1,11 @@
 # Team Roles 
 
-| Name               | Role |
-| ------------------ | ---- |
-| Kevin Kao          |      |
-| Ashely Tenesaca    |      |
-| Nicholas Salem     |      |
-| Salih Zainulabdeen |      |
+| Name               | Role                               |
+| ------------------ | ---------------------------------- |
+| Kevin Kao          | Designer and Model & DB Developer  |
+| Ashely Tenesaca    | Designer (HTML + CSS), Coordinator |
+| Nicholas Salem     | API dev                            |
+| Salih Zainulabdeen | Model & JavaScript                 |
 
 
 
