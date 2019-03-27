@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Timeline 
 
 Week1: March 28 - April 4: Design and planning 
@@ -12,4 +13,10 @@ Week3 April 11 - 18
 - Fronted => finish all pages (shopping cart page)
 - Backend => finish the API
 - Connect them together 
+
+=======
+Task: come up with a timeline that works for the entire team. 
+
+testing
+>>>>>>> 3efa1b3bcfd629300a8dcf79f256128cf5788751
 
