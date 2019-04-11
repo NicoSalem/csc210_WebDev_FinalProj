@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+SC');
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position-y: 5%;
+    margin: 0%;
+}
+div.container{
+    text-align: center;
+
+}
+
+/*Square buttons*/
+
+.btn.btn-square {
+    border-radius: 0;
+  
+  }
+
+input, label {
+    display:block;
+    color: white;
+}
+#search input {
+    width: 450px;
+    height: 40px;
+}
+form {
+    padding-top: 5%;
+    margin: 0 auto;
+    width: 450px;
+}
+
+
+/*Spacing of tabs in navbar*/
+nav a {
+    color: rgb(150, 150, 150);
+    padding-right: 30px;
+    
+}
+
+
+
