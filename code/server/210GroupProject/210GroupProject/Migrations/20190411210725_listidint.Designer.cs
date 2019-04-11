@@ -9,8 +9,8 @@ using _210GroupProject.Models;
 namespace _210GroupProject.Migrations
 {
     [DbContext(typeof(Database))]
-    [Migration("20190405200058_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190411210725_listidint")]
+    partial class listidint
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,8 @@ namespace _210GroupProject.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int?>("UserId");
+
+                    b.Property<bool>("isPublished");
 
                     b.HasKey("Id");
 
@@ -40,6 +42,8 @@ namespace _210GroupProject.Migrations
                     b.Property<string>("Address");
 
                     b.Property<string>("ImageURL");
+
+                    b.Property<int>("ListId");
 
                     b.Property<int?>("ListOfPlacesId");
 

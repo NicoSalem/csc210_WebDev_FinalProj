@@ -12,5 +12,6 @@ namespace _210GroupProject.Models
         public int Id { get; set; }
         public User User { get; set; }
         public List<Place> LOfPlaces { get; set; }
+        public bool isPublished { get; set; }
     }
 }

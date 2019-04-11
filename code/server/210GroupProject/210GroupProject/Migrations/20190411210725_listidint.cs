@@ -2,7 +2,7 @@
 
 namespace _210GroupProject.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class listidint : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,7 +25,8 @@ namespace _210GroupProject.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<int>(nullable: true)
+                    UserId = table.Column<int>(nullable: true),
+                    isPublished = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -43,6 +44,7 @@ namespace _210GroupProject.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
+                    ListId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     Phone = table.Column<string>(nullable: true),
