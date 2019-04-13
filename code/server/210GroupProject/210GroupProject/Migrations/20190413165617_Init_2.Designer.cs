@@ -9,8 +9,8 @@ using _210GroupProject.Models;
 namespace _210GroupProject.Migrations
 {
     [DbContext(typeof(Database))]
-    [Migration("20190411210725_listidint")]
-    partial class listidint
+    [Migration("20190413165617_Init_2")]
+    partial class Init_2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,45 +23,56 @@ namespace _210GroupProject.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("UserId");
+                    b.Property<bool>("IsPublished");
 
-                    b.Property<bool>("isPublished");
+                    b.Property<string>("ListTitle")
+                        .IsRequired();
+
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("DbOfLists");
+                    b.ToTable("Lists");
                 });
 
             modelBuilder.Entity("_210GroupProject.Models.Place", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Address")
+                        .IsRequired();
 
-                    b.Property<string>("ImageURL");
+                    b.Property<string>("ImageURL")
+                        .IsRequired();
 
                     b.Property<int>("ListId");
 
                     b.Property<int?>("ListOfPlacesId");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
-                    b.Property<string>("Phone");
+                    b.Property<string>("Phone")
+                        .IsRequired();
 
                     b.Property<string>("PriceRange");
 
                     b.Property<int>("Rating");
 
-                    b.Property<string>("URL");
+                    b.Property<string>("URL")
+                        .IsRequired();
+
+                    b.Property<string>("YelpId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
                     b.HasIndex("ListOfPlacesId");
 
-                    b.ToTable("Place");
+                    b.ToTable("Places");
                 });
 
             modelBuilder.Entity("_210GroupProject.Models.User", b =>
@@ -69,24 +80,26 @@ namespace _210GroupProject.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
-                    b.ToTable("DbOfUsers");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("_210GroupProject.Models.ListOfPlaces", b =>
                 {
                     b.HasOne("_210GroupProject.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("_210GroupProject.Models.Place", b =>
                 {
                     b.HasOne("_210GroupProject.Models.ListOfPlaces")
-                        .WithMany("LOfPlaces")
+                        .WithMany("Places")
                         .HasForeignKey("ListOfPlacesId");
                 });
 #pragma warning restore 612, 618

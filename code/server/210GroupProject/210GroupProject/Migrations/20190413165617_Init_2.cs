@@ -2,90 +2,93 @@
 
 namespace _210GroupProject.Migrations
 {
-    public partial class listidint : Migration
+    public partial class Init_2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "DbOfUsers",
+                name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DbOfUsers", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "DbOfLists",
+                name: "Lists",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<int>(nullable: true),
-                    isPublished = table.Column<bool>(nullable: false)
+                    UserId = table.Column<int>(nullable: false),
+                    ListTitle = table.Column<string>(nullable: false),
+                    IsPublished = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DbOfLists", x => x.Id);
+                    table.PrimaryKey("PK_Lists", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DbOfLists_DbOfUsers_UserId",
+                        name: "FK_Lists_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "DbOfUsers",
+                        principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Place",
+                name: "Places",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    YelpId = table.Column<string>(nullable: false),
                     ListId = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: false),
+                    Phone = table.Column<string>(nullable: false),
                     Rating = table.Column<int>(nullable: false),
                     PriceRange = table.Column<string>(nullable: true),
-                    URL = table.Column<string>(nullable: true),
-                    ImageURL = table.Column<string>(nullable: true),
+                    URL = table.Column<string>(nullable: false),
+                    ImageURL = table.Column<string>(nullable: false),
                     ListOfPlacesId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Place", x => x.Id);
+                    table.PrimaryKey("PK_Places", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Place_DbOfLists_ListOfPlacesId",
+                        name: "FK_Places_Lists_ListOfPlacesId",
                         column: x => x.ListOfPlacesId,
-                        principalTable: "DbOfLists",
+                        principalTable: "Lists",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_DbOfLists_UserId",
-                table: "DbOfLists",
+                name: "IX_Lists_UserId",
+                table: "Lists",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Place_ListOfPlacesId",
-                table: "Place",
+                name: "IX_Places_ListOfPlacesId",
+                table: "Places",
                 column: "ListOfPlacesId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Place");
+                name: "Places");
 
             migrationBuilder.DropTable(
-                name: "DbOfLists");
+                name: "Lists");
 
             migrationBuilder.DropTable(
-                name: "DbOfUsers");
+                name: "Users");
         }
     }
 }
