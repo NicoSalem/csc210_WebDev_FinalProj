@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using _210GroupProject.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -40,7 +41,7 @@ namespace _210GroupProject.Controllers {
         }
 
         //TODO: GET LIST BY ID
-        [HttpGet("api/lists/{id}")]
+        [HttpGet("api/list/{id}")]
         public ActionResult<int> GetList([Required] int id) {
             if (!ModelState.IsValid)
                 return BadRequest("Bad user");
@@ -59,7 +60,7 @@ namespace _210GroupProject.Controllers {
         }
 
         //TODO: publish list by id 
-        [HttpGet("api/lists/publish/{id}")]
+        [HttpGet("api/list/publish/{id}")]
         public ActionResult<int> PublishLis([Required] int id) {
             if (!ModelState.IsValid)
                 return BadRequest("Bad user");
@@ -96,6 +97,21 @@ namespace _210GroupProject.Controllers {
             using (var db = new Database()) {
                 var lists = db.Lists
                     .Where(l => l.IsPublished)
+                    .Include(l => l.User)
+                    .ToList<ListOfPlaces>();
+                if (lists.Count == 0) {
+                    return BadRequest("no accounts");
+                }
+                return Ok(lists);
+            }
+        }
+
+        //TODO: get all the lists of user id 
+        [HttpGet("api/lists/{id}")]
+        public ActionResult GetAllListsOfID(int id) {
+            using (var db = new Database()) {
+                var lists = db.Lists
+                    .Where(l => l.UserId == id)
                     .Include(l => l.User)
                     .ToList<ListOfPlaces>();
                 if (lists.Count == 0) {
@@ -160,7 +176,19 @@ namespace _210GroupProject.Controllers {
             }
         }
 
-       
+        [HttpGet("/api/yelp")]
+        public async  Task<string> GetData([FromQuery] string Term, [FromQuery] string Location, [FromQuery] string Categories) {
+            string BaseURL = $"https://api.yelp.com/v3/businesses/search?term={Term}&location={Location}&categories={Categories}&limit=10";
+            string ApiKey = "Bearer 1fb4Ta4mO9TC412qLRAbFhy8O5tAczd62HKFywqIE2GOIW5NR-jRV88XJ7IIvRuMOdXAm0fYlUQhYZC4c-a0HWlu572yMMOZuAOhDlkSxjzogZpJSYMfB_Vt3a-jXHYx"; 
+            var request = new HttpRequestMessage(HttpMethod.Get,BaseURL);
+            request.Headers.Add("Authorization", ApiKey);
+            using (HttpClient client = new HttpClient())
+            using (HttpResponseMessage res = await client.SendAsync(request))
+            using (HttpContent content = res.Content) {
+                string data = await content.ReadAsStringAsync();
+                return data;
+            }
+        }
     }
 
 }
