@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home | Price Comparison | CSC 210 Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="results.css">
+</head>
+
+<body>
+
+    <header>
+
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-dark" style="background-color: #000000;">
+            <a href="index.html"><img src="logo2.png" width="45" height="45"></a>
+
+            <!-- <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"
+                title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"
+                title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
+
+            <span class="navbar-text">
+                <a href="index.html">Home</a>
+                <a href="listhub.html">Lists Hubs</a>
+                <a href="mylist.html">My Lists</a>
+            </span>
+        </nav>
+
+        <!-- Restaurant & Location search -->
+        <div id="search">
+            <form>
+                <div class="form-group">
+                    <label>Search for a restaurant</label>
+                    <input class="form-control" id="searchTerm" placeholder="For example: McDonalds">
+                </div>
+                <div class="form-group">
+                    <label>Enter location</label>
+                    <input class="form-control" id="location" placeholder="For example: Rochester or NYC">
+                </div>
+                <div>
+                    <label>Select the types of the restaurants you want to search for </label>
+                </div>
+            </form>
+            <br>
+            <!--Line break-->
+
+            <!--Restaurant types buttons-->
+            <div class="container btn-group-justified">
+                <div class="btn-group">
+                    <button class="btn btn-light btn-square mr-2" type="button">American</button>
+                    <button class="btn btn-light btn-square mr-2" type="button">Japanese</button>
+                    <button class="btn btn-light btn-square mr-2" type="button">Chinese</button>
+                    <button class="btn btn-light btn-square mr-2" type="button">Mexican</button>
+                </div>
+                <br><br>
+                <!--Line break-->
+
+                <div class="btn-group">
+                    <button class="btn btn-light btn-square mr-2" type="button">Vietnamize</button>
+                    <button class="btn btn-light btn-square mr-2" type="button">Middle Eastern</button>
+                    <button class="btn btn-light btn-square mr-2" type="button">Indian</button>
+                    <button class="btn btn-light btn-square mr-2" type="button">South Korean</button>
+
+                </div>
+
+                <br><br>
+                <!--Line break-->
+
+                <button class="btn btn-success">Search</button>
+            </div>
+        </div>
+    </header>
+
+</body>
+
+</html>
