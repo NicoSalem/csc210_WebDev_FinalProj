@@ -1,0 +1,14 @@
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\bin\Release\netcoreapp2.2\210GroupProject.deps.json
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\bin\Release\netcoreapp2.2\210GroupProject.runtimeconfig.json
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\bin\Release\netcoreapp2.2\210GroupProject.runtimeconfig.dev.json
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\bin\Release\netcoreapp2.2\210GroupProject.dll
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\bin\Release\netcoreapp2.2\210GroupProject.pdb
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\obj\Release\netcoreapp2.2\210GroupProject.csprojAssemblyReference.cache
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\obj\Release\netcoreapp2.2\210GroupProject.csproj.CoreCompileInputs.cache
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\obj\Release\netcoreapp2.2\210GroupProject.RazorAssemblyInfo.cache
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\obj\Release\netcoreapp2.2\210GroupProject.RazorAssemblyInfo.cs
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\obj\Release\netcoreapp2.2\210GroupProject.AssemblyInfoInputs.cache
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\obj\Release\netcoreapp2.2\210GroupProject.AssemblyInfo.cs
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\obj\Release\netcoreapp2.2\210GroupProject.RazorTargetAssemblyInfo.cache
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\obj\Release\netcoreapp2.2\210GroupProject.dll
+C:\Users\salih\IdeaProjects\CSC 210\Group_project\code\server\210GroupProject\210GroupProject\obj\Release\netcoreapp2.2\210GroupProject.pdb

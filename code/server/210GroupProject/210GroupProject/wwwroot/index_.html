@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home | CSC 210 Project</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/site.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
@@ -25,7 +27,12 @@
             </span>
         </nav>
     </header>
-    <main>
+    <div id="search-wrap">
+        <div id="dialog">
+            <label for="name" style="color: black;">Please enter your name</label>
+            <input type="text" name="name" id="userName" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+            <button class="btn btn-success" id="registerUser" onclick="registerUser()">Register</button>
+        </div>
         <div class="container search">
             <div class="row">
                 <div class="col-md-3"></div>
@@ -58,11 +65,15 @@
                 <div class="col-md-3"></div>
             </div>
         </div>
-        <div class="container" style="background: white">
-            <div class="row json">
-
+    </div>
+    <div class="container" style="background: white">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="searchResultBox"></div>
             </div>
+            <div class="col-md-2"></div>
         </div>
-    </main>
+    </div>
 </body>
 </html>

@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+SC');
-body {
+#search-wrap {
     font-family: 'Noto Sans SC', sans-serif;
     background-image: url("../img/background.jpg");
+    background-repeat: no-repeat; 
+    background-size:cover;
+    height:100%; 
+    width: 100%;  
     margin: 0%;
+    text-align: center; 
 }
 
-
-div.container{
-    text-align: center;
+#search {
+    margin-top: 40px;
+    padding-bottom: 40px;
 }
-
 /*Square buttons*/
 
 .btn.btn-square {
@@ -21,9 +25,7 @@ input, label {
     display:block;
     color: white;
 }
-#search {
-    margin-top:40px; 
-}
+
 form {
     padding-top: 5%;
     margin: 0 auto;
@@ -43,3 +45,70 @@ button {
 }
 
 
+#dialog {
+    background: white; 
+    color: black; 
+}
+
+#dialog:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -2;
+}
+
+.searchResultBox {
+    margin-top: 40px; 
+}
+
+.item-display {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-column-gap: 20px;
+    height: 30%;
+    border: 1px solid #707070;
+    background-color: white;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-block;
+    float: left;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    margin-left: 8px;
+}
+
+#item {
+    height: 30%;
+    margin: 10px 10px 10px 10px; 
+    border: 1px solid #707070;
+}
+
+#description {
+    margin-top: 5%;
+}
+
+.btn {
+    border-radius: 50px;
+}
+
+.btn-section {
+    margin-top:20px; 
+    margin-left: 20px; 
+}
+
+.itemImage {
+    margin: 0; 
+    height:12em; 
+    width:12em; 
+}
+
+.link {
+    color: white; 
+}
