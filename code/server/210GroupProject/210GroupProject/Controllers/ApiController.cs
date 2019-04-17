@@ -54,7 +54,7 @@ namespace _210GroupProject.Controllers {
                 if (list == null)
                     return BadRequest("list not found");
                 var places = db.Places.Where(p => p.ListId == id).ToList<Place>();
-                list.Places = places; 
+                list.Places = places;
                 return Ok(list);
             }
         }
@@ -72,7 +72,7 @@ namespace _210GroupProject.Controllers {
                 if (list == null)
                     return BadRequest("list not found");
                 list.IsPublished = true;
-                db.SaveChanges(); 
+                db.SaveChanges();
                 return Ok(list);
             }
         }
@@ -102,7 +102,18 @@ namespace _210GroupProject.Controllers {
                 if (lists.Count == 0) {
                     return BadRequest("no accounts");
                 }
-                return Ok(lists);
+                List<List<string>> thumbs = new List<List<string>>();
+                foreach (ListOfPlaces list in lists) {
+                    var places = db.Places.Where(p => p.ListId == list.Id);
+                    List<string> listThumbs = new List<string>();
+                    foreach (Place p in places) {
+                        listThumbs.Add(p.ImageURL);
+                        if (thumbs.Count == 4)
+                            break;
+                    }
+                    thumbs.Add(listThumbs);
+                }
+                return Ok(new { lists, thumb = thumbs });
             }
         }
 
@@ -117,7 +128,18 @@ namespace _210GroupProject.Controllers {
                 if (lists.Count == 0) {
                     return BadRequest("no accounts");
                 }
-                return Ok(lists);
+                List<List<string>> thumbs = new List<List<string>>();
+                foreach (ListOfPlaces list in lists) {
+                    var places = db.Places.Where(p => p.ListId == list.Id);
+                    List<string> listThumbs = new List<string>(); 
+                    foreach (Place p in places) {
+                        listThumbs.Add(p.ImageURL);
+                        if (thumbs.Count == 4)
+                            break;
+                    }
+                    thumbs.Add(listThumbs); 
+                }
+                return Ok(new { lists, thumb = thumbs });
             }
         }
 
@@ -153,12 +175,12 @@ namespace _210GroupProject.Controllers {
         [HttpGet("api/place/{Id}")]
         public ActionResult GetPlace(int Id) {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState); 
+                return BadRequest(ModelState);
             using (var db = new Database()) {
                 var place = db.Places.Where(p => p.Id == Id).FirstOrDefault();
                 if (place == null)
                     return BadRequest("place not found");
-                return Ok(place); 
+                return Ok(place);
             }
         }
         //TODO: get remove item from list return list id 
@@ -171,16 +193,16 @@ namespace _210GroupProject.Controllers {
                 if (place == null)
                     return BadRequest("place not found");
                 db.Places.Remove(place);
-                db.SaveChanges(); 
-                return Ok("place was deleted"); 
+                db.SaveChanges();
+                return Ok("place was deleted");
             }
         }
 
         [HttpGet("/api/yelp")]
-        public async  Task<string> GetData([FromQuery] string Term, [FromQuery] string Location, [FromQuery] string Categories) {
+        public async Task<string> GetData([FromQuery] string Term, [FromQuery] string Location, [FromQuery] string Categories) {
             string BaseURL = $"https://api.yelp.com/v3/businesses/search?term={Term}&location={Location}&categories={Categories}&limit=10";
-            string ApiKey = "Bearer 1fb4Ta4mO9TC412qLRAbFhy8O5tAczd62HKFywqIE2GOIW5NR-jRV88XJ7IIvRuMOdXAm0fYlUQhYZC4c-a0HWlu572yMMOZuAOhDlkSxjzogZpJSYMfB_Vt3a-jXHYx"; 
-            var request = new HttpRequestMessage(HttpMethod.Get,BaseURL);
+            string ApiKey = "Bearer 1fb4Ta4mO9TC412qLRAbFhy8O5tAczd62HKFywqIE2GOIW5NR-jRV88XJ7IIvRuMOdXAm0fYlUQhYZC4c-a0HWlu572yMMOZuAOhDlkSxjzogZpJSYMfB_Vt3a-jXHYx";
+            var request = new HttpRequestMessage(HttpMethod.Get, BaseURL);
             request.Headers.Add("Authorization", ApiKey);
             using (HttpClient client = new HttpClient())
             using (HttpResponseMessage res = await client.SendAsync(request))
@@ -190,5 +212,4 @@ namespace _210GroupProject.Controllers {
             }
         }
     }
-
 }
