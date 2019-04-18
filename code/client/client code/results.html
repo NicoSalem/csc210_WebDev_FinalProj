@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Results | Price Comparison | CSC 210 Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="results.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-dark" style="background-color: #000000;">
+        <a href="index.html"><img src="logo2.png" width="45" height="45"></a>
+
+        <!-- <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"
+            title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"
+            title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
+
+        <span class="navbar-text">
+            <a href="index.html">Home</a>
+            <a href="listhub.html">Lists Hubs</a>
+            <a href="mylist.html">My Lists</a>
+        </span>
+    </nav>
+
+    <!-- Needs to be added Dynamically with each API call -->
+
+    <div id="header">
+        <h5>5 results for <strong>"McDonalds"</strong></h5>
+
+        <div class="dropdown">
+            <button type="button" id="dropdownMenuButton" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By
+                <span class="caret"></span>
+            </button>
+            <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton">
+                <a href="#">Rating</a>
+                <a href="#">Price</a>
+                <a href="#">Something else here</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- results: an example of the first result is shown. Needs to be added dynamically with the data
+    that comes from the API response -->
+    <div id="results">
+
+        <div id="item" class="item-display">
+            <img id="itemImage" src="mcdonalds.jpg" alt="an image of ... ">
+            <div class="description">
+                <div class="col-md-8">
+                    <p class="store-title">McDonalds</p>
+                    <p>Rating: 2</p>
+                    <p>$$$</p>
+                    <p>Phone: (415) 543-2595 </p>
+                    <p>Address: 609 Market St San Francisco, CA 94105 </p>
+                </div>
+            </div>
+            <div class="btn-section">
+                <button type="button" class="btn btn-dark btn-sm">View Restaurant</button>
+                <button type="button" class="btn btn-dark btn-sm">Add to list</button>
+            </div>
+
+        </div>
+        <br> <!-- break between results -->
+
+        <div id="item" class="item-display">
+            <img id="itemImage" src="mcdonalds.jpg" alt="an image of ... ">
+            <div class="description">
+                <div class="col-md-8">
+                    <p class="store-title">McDonalds</p>
+                    <p>Rating: 2</p>
+                    <p>$$$</p>
+                    <p>Phone: (415) 543-2595 </p>
+                    <p>Address: 609 Market St San Francisco, CA 94105 </p>
+                </div>
+            </div>
+            <div class="btn-section">
+                <button type="button" class="btn btn-dark btn-sm">View Restaurant</button>
+                <button type="button" class="btn btn-dark btn-sm">Add to list</button>
+            </div>
+        </div>
+        <br> <!-- break between results -->
+
+        <div id="item" class="item-display">
+            <img id="itemImage" src="mcdonalds.jpg" alt="an image of ... ">
+            <div class="description">
+                <div class="col-md-8">
+                    <p class="store-title">McDonalds</p>
+                    <p>Rating: 2</p>
+                    <p>$$$</p>
+                    <p>Phone: (415) 543-2595 </p>
+                    <p>Address: 609 Market St San Francisco, CA 94105 </p>
+                </div>
+            </div>
+            <div class="btn-section">
+                <button type="button" class="btn btn-dark btn-sm">View Restaurant</button>
+                <button type="button" class="btn btn-dark btn-sm">Add to list</button>
+            </div>
+
+        </div>
+        <br> <!-- break between results -->
+    </div>
+
+</body>
+
+</html>
