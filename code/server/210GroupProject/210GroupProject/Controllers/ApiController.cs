@@ -107,9 +107,9 @@ namespace _210GroupProject.Controllers {
                     var places = db.Places.Where(p => p.ListId == list.Id);
                     List<string> listThumbs = new List<string>();
                     foreach (Place p in places) {
-                        listThumbs.Add(p.ImageURL);
-                        if (thumbs.Count == 4)
+                        if (listThumbs.Count == 4)
                             break;
+                        listThumbs.Add(p.ImageURL);
                     }
                     thumbs.Add(listThumbs);
                 }
@@ -126,7 +126,7 @@ namespace _210GroupProject.Controllers {
                     .Include(l => l.User)
                     .ToList<ListOfPlaces>();
                 if (lists.Count == 0) {
-                    return BadRequest("no accounts");
+                    return Ok(new { lists });
                 }
                 List<List<string>> thumbs = new List<List<string>>();
                 foreach (ListOfPlaces list in lists) {
@@ -134,7 +134,7 @@ namespace _210GroupProject.Controllers {
                     List<string> listThumbs = new List<string>(); 
                     foreach (Place p in places) {
                         listThumbs.Add(p.ImageURL);
-                        if (thumbs.Count == 4)
+                        if (listThumbs.Count == 4)
                             break;
                     }
                     thumbs.Add(listThumbs); 

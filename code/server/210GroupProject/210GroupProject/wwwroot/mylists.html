@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Lists | CSC 210 Project</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/site.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-dark" style="background-color: #000000;">
+            <a href="index.html"><img src="img/logo2.png" width="45" height="45"></a>
+            <!-- <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"
+            l        title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"
+                    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
+            <span class="navbar-text">
+                <a href="index.html">Home</a>
+                <a href="listshub.html">Lists Hubs</a>
+                <a href="mylists.html" class="underlined">My Lists</a>
+            </span>
+        </nav>
+    </header>
+    <div id="title">
+        <p>My Lists</p>
+    </div>
+    <div class="row justify-content-center">
+        <button onclick="createNewList()" class="btn btn-success">Create New List</button>
+    </div>
+
+    <div class="container all-lists">
+
+    </div>
+    <div id="search-wrap"></div>
+
+    <div id="dialog" class="dialog">
+        <label for="name" style="color: black;">Please enter your name</label>
+        <input type="text" name="name" id="userName" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+        <button class="btn btn-success" id="registerUser" onclick="registerUser()">Register</button>
+    </div>
+</body>
+
+</html>
