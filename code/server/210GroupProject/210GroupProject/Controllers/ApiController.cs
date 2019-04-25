@@ -11,12 +11,13 @@ using Microsoft.EntityFrameworkCore;
 namespace _210GroupProject.Controllers {
     [ApiController]
     public class ApiController : Controller {
-        //TODO: GET user given id 
+        
+        /* BEGIN USER API CONTROLLERS */ 
+        //Get user by their id 
         [HttpGet("api/user/{Id}")]
         public ActionResult GetUser([Required] int Id) {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             using (var db = new Database()) {
                 var user = db.Users.Where(u => u.Id == Id).FirstOrDefault();
                 if (user == null)
@@ -26,8 +27,7 @@ namespace _210GroupProject.Controllers {
 
         }
 
-        //TODO: POST create user and return an id 
-
+        //Create user, add it database, and return their id 
         [HttpPost("api/user")]
         public ActionResult<int> CreateUser([FromBody] User user) {
             if (!ModelState.IsValid)
@@ -39,18 +39,22 @@ namespace _210GroupProject.Controllers {
                 return Ok(user.Id);
             }
         }
+        /* END USER CONTROLLERS */ 
 
-        //TODO: GET LIST BY ID
+
+        /* BEGIN A SINGLE LIST API CONTROLLERS */ 
+        
+        //Get list by list id 
         [HttpGet("api/list/{id}")]
         public ActionResult<int> GetList([Required] int id) {
             if (!ModelState.IsValid)
-                return BadRequest("Bad user");
+                return BadRequest(ModelState);
 
             using (var db = new Database()) {
                 var list = db.Lists
                     .Where(l => l.Id == id)
-                    .Include(l => l.User).
-                    FirstOrDefault();
+                    .Include(l => l.User) // include user info 
+                    .FirstOrDefault();
                 if (list == null)
                     return BadRequest("list not found");
                 var places = db.Places.Where(p => p.ListId == id).ToList<Place>();
@@ -59,11 +63,11 @@ namespace _210GroupProject.Controllers {
             }
         }
 
-        //TODO: publish list by id 
+        //TODO: publish list with the given id 
         [HttpGet("api/list/publish/{id}")]
         public ActionResult<int> PublishLis([Required] int id) {
             if (!ModelState.IsValid)
-                return BadRequest("Bad user");
+                return BadRequest(ModelState);
 
             using (var db = new Database()) {
                 var list = db.Lists
@@ -77,7 +81,7 @@ namespace _210GroupProject.Controllers {
             }
         }
 
-        //TODO: POST create A LIST return list id 
+        //TODO: Create a list, add it to DB, and return its id 
         [HttpPost("api/lists")]
         public ActionResult CreateList([FromBody] ListOfPlaces listOfPlaces) {
             using (var db = new Database()) {
@@ -91,7 +95,27 @@ namespace _210GroupProject.Controllers {
             }
         }
 
-        //TODO: get all lists 
+        //TODO: Remove a list with a given id from the database 
+        [HttpGet("api/lists/remove/{id}")]
+        public ActionResult RemoveList(int id) {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState); 
+
+            using (var db = new Database()) {
+                var list = db.Lists.Where(l => l.Id == id).FirstOrDefault();
+                if (list == null)
+                    return BadRequest("did not find list to be deleted");
+                db.Lists.Remove(list);
+                db.SaveChanges();
+                return Ok("List was deleted");
+            }
+        }
+
+        /*END SINGLE LIST API CONTROLLERS */
+
+        /* BEGIN MULTIPLE LISTS API CONTROLLERS*/ 
+        
+        //TODO: get all published lists  
         [HttpGet("api/lists")]
         public ActionResult GetAllLists() {
             using (var db = new Database()) {
@@ -100,7 +124,7 @@ namespace _210GroupProject.Controllers {
                     .Include(l => l.User)
                     .ToList<ListOfPlaces>();
                 if (lists.Count == 0) {
-                    return BadRequest("no accounts");
+                    return BadRequest("no lists were found");
                 }
                 List<List<string>> thumbs = new List<List<string>>();
                 foreach (ListOfPlaces list in lists) {
@@ -117,9 +141,11 @@ namespace _210GroupProject.Controllers {
             }
         }
 
-        //TODO: get all the lists of user id 
+        //Get all the lists of a given user id
         [HttpGet("api/lists/{id}")]
         public ActionResult GetAllListsOfID(int id) {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState); 
             using (var db = new Database()) {
                 var lists = db.Lists
                     .Where(l => l.UserId == id)
@@ -142,21 +168,12 @@ namespace _210GroupProject.Controllers {
                 return Ok(new { lists, thumb = thumbs });
             }
         }
+        /*END MULTIPLE LISTS CONTROLLERS*/
 
-        //TODO: get remove list return ok
-        [HttpGet("api/lists/remove/{id}")]
-        public ActionResult RemoveList(int id) {
-            using (var db = new Database()) {
-                var list = db.Lists.Where(l => l.Id == id).FirstOrDefault();
-                if (list == null)
-                    return BadRequest("did not find list to be deleted");
-                db.Lists.Remove(list);
-                db.SaveChanges();
-                return Ok("List was deleted");
-            }
-        }
 
-        //TODO: post add to list 
+        /* BEGIN PLACE API CONTROLLERS */ 
+        
+        //Create and add a new place to DB 
         [HttpPost("api/place")]
         public ActionResult CreatePlace([FromBody] Place place) {
             if (!ModelState.IsValid)
@@ -172,6 +189,7 @@ namespace _210GroupProject.Controllers {
             return Ok(place.ListId);
         }
 
+        // GET a place with a given id 
         [HttpGet("api/place/{Id}")]
         public ActionResult GetPlace(int Id) {
             if (!ModelState.IsValid)
@@ -183,7 +201,8 @@ namespace _210GroupProject.Controllers {
                 return Ok(place);
             }
         }
-        //TODO: get remove item from list return list id 
+
+        //Remove a place with a given id
         [HttpGet("api/place/remove/{id}")]
         public ActionResult RemovePlace(int id) {
             if (!ModelState.IsValid)
@@ -197,7 +216,10 @@ namespace _210GroupProject.Controllers {
                 return Ok("place was deleted");
             }
         }
+        /* END PLACE CONTROLLERS */ 
 
+        /* BEGIN Yelp API controller */ 
+        // Make a request to Yelp API given a search term, location, and categories; then return reponse recieved from Yelp API to the client 
         [HttpGet("/api/yelp")]
         public async Task<string> GetData([FromQuery] string Term, [FromQuery] string Location, [FromQuery] string Categories) {
             string BaseURL = $"https://api.yelp.com/v3/businesses/search?term={Term}&location={Location}&categories={Categories}&limit=10";
@@ -211,5 +233,6 @@ namespace _210GroupProject.Controllers {
                 return data;
             }
         }
+        /* END Yelp API Controller */ 
     }
 }
